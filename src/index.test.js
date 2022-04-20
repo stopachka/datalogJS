@@ -1,11 +1,5 @@
 import relevantTriples from "./exampeTriples";
-import {
-  createDB,
-  matchPattern,
-  query,
-  querySingle,
-  queryWhere,
-} from "./index2";
+import { createDB, matchPattern, query, querySingle, queryWhere } from ".";
 
 const db = createDB(relevantTriples);
 
