@@ -6,8 +6,8 @@ function isVariable(x) {
 
 function matchVariable(variable, triplePart, context) {
   if (context.hasOwnProperty(variable)) {
-    const binded = context[variable];
-    return matchPart(binded, triplePart, context);
+    const bound = context[variable];
+    return matchPart(bound, triplePart, context);
   }
   return { ...context, [variable]: triplePart };
 }
@@ -59,7 +59,6 @@ export function query({ find, where }, db) {
   return contexts.map((context) => actualize(context, find));
 }
 
-// --------
 // 5. DB
 
 function relevantTriples(pattern, db) {
