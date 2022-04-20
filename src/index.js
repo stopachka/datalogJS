@@ -5,8 +5,8 @@ function isVariable(x) {
 }
 
 function matchVariable(variable, triplePart, context) {
-  const binded = context[variable];
-  if (binded) {
+  if (context.hasOwnProperty(variable)) {
+    const binded = context[variable];
     return matchPart(binded, triplePart, context);
   }
   return { ...context, [variable]: triplePart };
@@ -40,9 +40,7 @@ export function querySingle(pattern, db, context) {
 export function queryWhere(patterns, db) {
   return patterns.reduce(
     (contexts, pattern) => {
-      return contexts
-        .map((context) => querySingle(pattern, db, context))
-        .flat(1);
+      return contexts.flatMap((context) => querySingle(pattern, db, context));
     },
     [{}]
   );
@@ -75,7 +73,7 @@ function relevantTriples(pattern, db) {
   if (!isVariable(value)) {
     return db.valueIndex[value];
   }
-  return db.facts;
+  return db.triples;
 }
 
 function indexBy(triples, idx) {
