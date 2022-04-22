@@ -1,7 +1,7 @@
 // 1. patternMatch
 
 function isVariable(x) {
-  return typeof x == "string" && x.startsWith("?");
+  return typeof x === "string" && x.startsWith("?");
 }
 
 function matchVariable(variable, triplePart, context) {
