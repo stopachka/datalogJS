@@ -6,3 +6,5 @@ A simple datalog query engine, implemented in 100 lines of Javascript. Accompani
 npm i 
 npm run test
 ```
+To study the algorithm, start with `matchVariable`, `querySingle`, and `actualize`.
+
